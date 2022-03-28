@@ -4,6 +4,8 @@ export const useWebcamCapture = (stickerImg, title) => {
   const [videoRef, setVideoRef] = useState();
   const [canvasRef, setCanvasRef] = useState();
   const [picture, setPicture] = useState();
+  const [pictures, setPictures] = useState([]);
+
 
   const onVideoRef = useCallback((node) => {
     setVideoRef(node);
@@ -18,20 +20,20 @@ export const useWebcamCapture = (stickerImg, title) => {
   useEffect(() => {
     if (videoRef && canvasRef && !initialized) {
       navigator.mediaDevices
-        .getUserMedia({
-          video: {
-            width: { min: 1024, ideal: 1280, max: 1920 },
-            height: { min: 576, ideal: 720, max: 1080 },
-          },
-          audio: false,
-        })
-        .then(function (stream) {
-          videoRef.srcObject = stream;
-          videoRef.play();
-        })
-        .catch(function (err) {
-          console.log("Couldn't start webcam: " + err);
-        });
+          .getUserMedia({
+            video: {
+              width: { min: 1024, ideal: 1280, max: 1920 },
+              height: { min: 576, ideal: 720, max: 1080 },
+            },
+            audio: false,
+          })
+          .then(function (stream) {
+            videoRef.srcObject = stream;
+            videoRef.play();
+          })
+          .catch(function (err) {
+            console.log("Couldn't start webcam: " + err);
+          });
 
       const onCanPlay = function (ev) {
         const width = videoRef.videoWidth;
@@ -66,11 +68,11 @@ export const useWebcamCapture = (stickerImg, title) => {
           const x = ((mousePos.current.x - bb.left) / bb.width) * width;
           const y = ((mousePos.current.y - bb.top) / bb.height) * height;
           ctx.drawImage(
-            stickerImg,
-            x - width * 0.2,
-            y - width * 0.2,
-            width * 0.4,
-            width * 0.4
+              stickerImg,
+              x - width * 0.2,
+              y - width * 0.2,
+              width * 0.4,
+              width * 0.4
           );
         }
         requestAnimationFrame(renderFrame);
@@ -98,14 +100,15 @@ export const useWebcamCapture = (stickerImg, title) => {
   }, [canvasRef]);
 
   const onCapture = useCallback(
-    (ev) => {
-      if (canvasRef) {
-        const data = canvasRef.toDataURL("image/png");
-        setPicture({ dataUri: data, title });
-      }
-    },
-    [canvasRef, title]
+      (ev) => {
+        if (canvasRef) {
+          const data = canvasRef.toDataURL("image/png");
+          setPicture({ dataUri: data, title });
+          setPictures(oldArray => [...oldArray, { dataUri: data, title }]);
+        }
+      },
+      [canvasRef, title]
   );
 
-  return [onVideoRef, onCanvasRef, onCapture, picture];
+  return [onVideoRef, onCanvasRef, onCapture, picture, pictures];
 };

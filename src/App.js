@@ -35,7 +35,27 @@ function App(props) {
         handleCanvasRef, // callback function to set ref for main canvas element
         handleCapture, // callback function to trigger taking the picture
         picture, // latest captured picture data object
+        pictures // List of all the pictures
     ] = useWebcamCapture(sticker?.img, title);
+
+    function Pictures(props) {
+        const listItems = pictures.map((picture, index) =>
+            <div key={index} className="picture">
+                <img src={picture.dataUri} alt="selfie"/>
+                <h3>{picture.title}</h3>
+                <a
+                    href={picture.dataUri}
+                    download="selfie.png"
+                    className="downloadBtn"
+                >
+                    Download!
+                </a>
+            </div>
+        );
+        return (
+            <div>{listItems}</div>
+        );
+    }
 
     return (
 
@@ -138,17 +158,7 @@ function App(props) {
                                     Cherish this moment forever
                                 </h1>
                                 {picture && (
-                                    <div className="picture">
-                                        <img src={picture.dataUri} alt="selfie"/>
-                                        <h3>{picture.title}</h3>
-                                        <a
-                                            href={picture.dataUri}
-                                            download="selfie.png"
-                                            className="downloadBtn"
-                                        >
-                                            Download!
-                                        </a>
-                                    </div>
+                                    <Pictures></Pictures>
                                 )}
                             </article>
                         </section>
