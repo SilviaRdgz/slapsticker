@@ -142,6 +142,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 16px;
   & input {
     margin: 16px 0 0 0;
     border: 2px solid black;
@@ -151,7 +152,6 @@ h2 {
 
   & img {
     height: 6rem;
-    border-radius: 24px;
     padding: 5px;
 
   }
@@ -162,6 +162,10 @@ h2 {
   background: none;
   position: relative;
   display: inline-block;
+  border: 2px solid black;
+  padding: 5px 5px 31px;
+  margin: 0 5px;
+
 
   &:not(:first-of-type) {
     margin-top: 24px;
