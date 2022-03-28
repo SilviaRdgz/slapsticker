@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWebcamCapture } from "./useWebcamCapture";
 import './App.scss';
-import logo from "./slap.png";
+import slap from "./assets/stickers/slap.png";
 import cocktail from "./assets/stickers/cocktail.png";
 import moustache from "./assets/stickers/moustache.png";
 import glasses from "./assets/stickers/glasses.png";
@@ -13,7 +13,7 @@ import iconInfo from "./assets/icons/icon-info.jpeg";
 
 import {Link, Switch, Route, Redirect} from "react-router-dom";
 
-const stickersArr = [logo, cocktail, moustache, glasses, smiley, zap];
+const stickersArr = [slap, cocktail, moustache, glasses, smiley, zap];
 const stickers = stickersArr.map((url) => {
     const img = document.createElement("img");
     img.src = url;
