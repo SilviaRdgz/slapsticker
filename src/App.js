@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useWebcamCapture } from "./useWebcamCapture";
-import useSound from 'use-sound';
-import stickerSound from'./assets/audio/PressSticker.mp3'
 import './App.scss';
 import logo from "./slap.png";
 import cocktail from "./assets/stickers/cocktail.png";
@@ -23,8 +21,6 @@ const stickers = stickersArr.map((url) => {
 });
 
 function App(props) {
-
-    const [play] = useSound(stickerSound);
 
     const [sticker, setSticker] = useState();
     // title for the picture that will be captured
@@ -116,7 +112,7 @@ function App(props) {
                                 </h1>
                             </div>
                             <div className="container__middleCards stickers" style={{width: "100%"}}>
-                                <button onClick={() => setSticker(stickers[0]) && play}>
+                                <button onClick={() => setSticker(stickers[0])}>
                                     <img src={stickers[0].url} alt="hand"/>
                                 </button>
                                 <button onClick={() => setSticker(stickers[1])}>
@@ -151,15 +147,18 @@ function App(props) {
                             />
                         </section>
                         <section className="bottomCards">
-                            <article className="gallery">
+                            <article>
                                 <h1 className="step4">
                                     Step 4:
                                     <br></br>
                                     Cherish this moment forever
                                 </h1>
-                                {picture && (
-                                    <Pictures></Pictures>
-                                )}
+                                <div className="gallery">
+                                    {picture && (
+                                        <Pictures></Pictures>
+                                    )}
+                                </div>
+
                             </article>
                         </section>
                     </main>
