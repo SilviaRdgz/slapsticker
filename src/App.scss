@@ -1,0 +1,182 @@
+* body {
+  background: white;
+  color: black;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+
+.app {
+  padding: 20px;
+  max-width: 800px;
+  min-height: 600px;
+  margin: auto;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  & div {
+    margin: auto;
+
+    & ul {
+      display: flex;
+      justify-content: End;
+      align-items: Center;
+      padding: 0 16px;
+
+      & li {
+        padding-right: 5px;
+        list-style: none;
+      }
+
+    }
+  }
+}
+
+.header {
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  color: black;
+  max-width: 800px;
+  margin: auto;
+  @media only screen and (min-width: 600px) {
+    font-size: 1.5rem !important;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 800px;
+
+  &__topCards, &__middleCards, bottomCards {
+    border: 2px solid black;
+    text-align: center;
+    padding: 16px;
+    box-shadow: 12px 12px 2px 1px #fee440;
+    margin-bottom: 20px;
+  }
+
+}
+
+.title, .step4 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  @media only screen and (min-width: 600px) {
+    font-size: 1.5rem;
+  }
+}
+
+.step4 {
+  padding: 16px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.stickers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+
+  & img {
+    height: 2rem;
+
+    &:hover {
+      height: 2.5rem;
+    }
+
+    @media only screen and (min-width: 600px) {
+      height: 3rem;
+      &:hover {
+        cursor: pointer;
+        height: 3.5rem;
+      }
+    }
+
+  }
+
+  & button {
+    max-width: 30%;
+    max-height: 50%;
+    border: none;
+    background: transparent;
+  }
+}
+
+.bottomCards {
+  border: 2px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px;
+  box-shadow: 12px 12px 2px 1px #fee440;
+  margin: 30px auto;
+  max-width: 800px;
+
+  h2 {
+    padding: 16px;
+  }
+
+
+  & canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  & video {
+    display: none;
+  }
+}
+
+.gallery {
+  & input {
+    margin: 16px 0 0 0;
+    border: 2px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+
+  & img {
+    height: 9rem;
+    border-radius: 24px;
+    @media only screen and (min-width: 600px) {
+      height: 16rem;
+    }
+  }
+
+}
+
+.picture {
+  background: none;
+  position: relative;
+  display: inline-block;
+
+  & h3 {
+    text-align: center;
+  }
+
+  .downloadBtn {
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    padding: 5px 16px;
+    font-weight: bold;
+    &:hover {
+      background: #fee440;
+    }
+
+  }
+}
+.icons {
+  width: 20px;
+}
